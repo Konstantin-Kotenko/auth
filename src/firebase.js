@@ -55,13 +55,17 @@ const onHandleGitHub = async () => {
 };
 
 const onHandleFacebook = async () => {
+  console.log('asfa');
   socialLinks.classList.add('is-hidden');
   await signInWithPopup(auth, facebookProvider)
     .then(result => {
+      console.log('safasf');
       localStorage.setItem('user', JSON.stringify(result.user));
       exit.classList.remove('is-hidden');
     })
-    .catch(error => {});
+    .catch(error => {
+      console.log(error);
+    });
 };
 
 const onHandleSignOut = async () => {
@@ -71,7 +75,9 @@ const onHandleSignOut = async () => {
       menu.classList.remove('is-hidden');
       exit.classList.add('is-hidden');
     })
-    .catch(error => {});
+    .catch(error => {
+      console.log(error);
+    });
 };
 
 onAuthStateChanged(auth, user => {
